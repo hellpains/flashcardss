@@ -1,9 +1,12 @@
+import { Logout } from '@/assets/icons'
 import { Button } from '@/components/ui/button'
 
 export function App() {
   return (
     <div>
-      <Button variant={'secondary'}>hel;lasidjf;lkasjdfl;ksjdflo</Button>
+      <Button title={'hello'} variant={'tertiary'}>
+        <Logout fill={'fff'} />
+      </Button>
     </div>
   )
 }
