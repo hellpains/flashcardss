@@ -27,7 +27,7 @@ export const Primary: Story = {
   },
 }
 
-export const WidhIcon: Story = {
+export const WithIcon: Story = {
   args: {
     children: (
       <>
