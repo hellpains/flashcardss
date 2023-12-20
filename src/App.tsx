@@ -1,11 +1,9 @@
-import { Typography } from '@/components/ui/typography'
+import { Label } from '@/components/ui/label'
 
 export function App() {
   return (
-    <div>
-      <Typography as={'a'} href={'#'} style={{ color: 'white' }} variant={'large'}>
-        hesdfsdfsdfsdfllo
-      </Typography>
+    <div style={{ alignItems: 'center', textAlign: 'center', width: '200px' }}>
+      <Label>Input</Label>
     </div>
   )
 }
