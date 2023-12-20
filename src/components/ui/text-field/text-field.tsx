@@ -1,6 +1,7 @@
 import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import { Close, Eye, EyeOff, Search } from '@/assets/icons'
+import { Label } from '@/components/ui/label'
 
 import s from './text-field.module.scss'
 
@@ -30,7 +31,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     return (
       <div className={s.container}>
-        <span className={`${s.label} ${disabled ? s.disabled : ''}`}>{label}</span>
+        {label && <Label className={`${disabled ? s.disabled : ''}`}>{label}</Label>}
         {search && (
           <div className={s.searchButton}>
             <Button disabled={disabled} variant={'icon'}>
