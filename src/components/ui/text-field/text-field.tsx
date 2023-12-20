@@ -2,6 +2,7 @@ import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'rea
 
 import { Close, Eye, EyeOff, Search } from '@/assets/icons'
 import { Label } from '@/components/ui/label'
+import { Typography } from '@/components/ui/typography'
 
 import s from './text-field.module.scss'
 
@@ -69,7 +70,11 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             </Button>
           </div>
         )}
-        {error && <span className={s.errorText}>{error}</span>}
+        {error && (
+          <Typography className={s.errorText} variant={'caption'}>
+            {error}
+          </Typography>
+        )}
       </div>
     )
   }
