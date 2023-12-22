@@ -1,0 +1,64 @@
+.checkbox {
+  display: flex;
+  justify-content: start;
+}
+
+.root {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid var(--color-light-100);
+  border-radius: 2px;
+
+  &[data-disabled] {
+    color: var(--color-dark-100);
+    border: 2px solid var(--color-dark-100);
+  }
+}
+
+.label {
+  cursor: pointer;
+
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator {
+  width: 24px;
+  height: 24px;
+}
+
+.button {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  text-align: center;
+
+  border-radius: 24px;
+
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+
+  &:focus {
+    background-color: var(--color-dark-100);
+  }
+
+  &:active {
+    background-color: var(--color-dark-100);
+  }
+}

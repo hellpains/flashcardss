@@ -1,3 +1,4 @@
+export { default as CheckboxIcon } from './checkbox'
 export { default as Close } from './close'
 export { default as Eye } from './eye'
 export { default as EyeOff } from './eye-off'
