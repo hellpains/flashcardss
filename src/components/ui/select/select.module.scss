@@ -1,0 +1,50 @@
+.trigger {
+  all: unset;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 96.5%;
+  padding: 7px 0 7px 12px;
+
+  border: 1px solid var(--color-dark-300);
+
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+
+  &[data-state='open'] {
+    .arrows {
+      rotate: 180deg;
+    }
+  }
+}
+
+.content {
+  width: var(--radix-select-trigger-width);
+  border: 1px solid var(--color-dark-300);
+}
+
+.arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 10px;
+
+  transition: 0.2s;
+}
+
+.item {
+  all: unset;
+  cursor: pointer;
+  padding: 7px 0 7px 12px;
+
+  &:hover {
+    color: var(--color-accent-300);
+    background-color: var(--color-accent-900);
+  }
+}
