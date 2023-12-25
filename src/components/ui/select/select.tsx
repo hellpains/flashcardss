@@ -6,8 +6,8 @@ import * as RadixSelect from '@radix-ui/react-select'
 import s from './select.module.scss'
 
 type SelectProps = {
-  options: { title: string; value: string }[]
-  value?: string
+  options: { title: any; value: any }[]
+  value?: any
 } & ComponentPropsWithoutRef<typeof RadixSelect.Root>
 export const Select = ({ options, value, ...rest }: SelectProps) => {
   const itemSelect = options?.find(o => o.value === value)
