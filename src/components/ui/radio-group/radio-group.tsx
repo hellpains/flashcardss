@@ -1,10 +1,9 @@
 import * as React from 'react'
 
+import { Typography } from '@/components'
 import * as RadixRadioGroup from '@radix-ui/react-radio-group'
 
 import s from './radio-group.module.scss'
-
-import { Typography } from '../typography'
 
 const RadioGroupRoot = React.forwardRef<
   React.ElementRef<typeof RadixRadioGroup.Root>,

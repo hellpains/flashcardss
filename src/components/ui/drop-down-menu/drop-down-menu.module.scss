@@ -1,0 +1,41 @@
+.trigger {
+  all: unset;
+  cursor: pointer;
+}
+
+.content {
+  position: relative;
+
+  padding: 12px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 4px;
+
+  .triangle {
+    position: absolute;
+    top: -5.6px;
+    right: 12px;
+    rotate: 45deg;
+
+    width: 10px;
+    height: 10px;
+
+    background-color: inherit;
+    border-top: 1px solid var(--color-dark-500);
+    border-left: 1px solid var(--color-dark-500);
+  }
+}
+
+.item {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  margin: 12px 0;
+  background: var(--color-dark-500);
+}

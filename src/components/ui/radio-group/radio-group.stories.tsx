@@ -21,3 +21,15 @@ export const Primary: Story = {
     ],
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    defaultValue: 'value1',
+    disabled: true,
+    options: [
+      { title: 'Value 1', value: 'value1' },
+      { title: 'Value 2', value: 'value2' },
+      { title: 'Value 3', value: 'value3' },
+    ],
+  },
+}

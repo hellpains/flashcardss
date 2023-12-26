@@ -1,9 +1,9 @@
 import { ArrowDown } from '@/assets/icons'
+import { Typography } from '@/components'
 
 import s from './pagination.module.scss'
 
 import { Select } from '../select'
-import { Typography } from '../typography'
 import { changePage, usePagination } from './usePagination'
 
 type PaginationProps = {
