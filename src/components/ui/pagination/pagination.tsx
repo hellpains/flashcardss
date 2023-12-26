@@ -12,7 +12,7 @@ type PaginationProps = {
   page: number
   setLimit: (value: any) => void
   setPage: (page: number) => void
-  totalPage: number | undefined
+  totalPage: number
 }
 export const Pagination = ({
   limit,
