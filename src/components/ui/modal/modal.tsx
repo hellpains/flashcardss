@@ -6,12 +6,8 @@ import * as RadixDialog from '@radix-ui/react-dialog'
 
 import s from './modal.module.scss'
 
-type ModalProps = {
-  // cancelButton?: string
+export type ModalProps = {
   children?: ReactNode
-  // confirmButton?: string
-  // onCancel?: any
-  // onConfirm?: any
   onOpenChange?: (open: boolean) => void
   open?: boolean
   title?: string
@@ -30,6 +26,7 @@ export const Modal = ({ children, title, ...props }: ModalProps) => {
               <Close fill={'white'} />
             </RadixDialog.Close>
           </div>
+          {children}
         </RadixDialog.Content>
       </RadixDialog.Portal>
     </RadixDialog.Root>

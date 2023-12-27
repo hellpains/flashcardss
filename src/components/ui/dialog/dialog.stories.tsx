@@ -4,24 +4,24 @@ import { useState } from 'react'
 
 import { Button } from '@/components'
 
-import { Modal } from './'
+import { Dialog } from './'
 
 const meta = {
   argTypes: {},
-  component: Modal,
+  component: Dialog,
   tags: ['autodocs'],
-  title: 'Components/Modal',
-} satisfies Meta<typeof Modal>
+  title: 'Components/Dialog',
+} satisfies Meta<typeof Dialog>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: 'Modal',
+    children: 'Dialog',
     onOpenChange: () => {},
     open: true,
-    title: 'Modal',
+    title: 'Dialog',
   },
   render: args => {
     const [open, setOpen] = useState(false)
@@ -29,11 +29,18 @@ export const Primary: Story = {
     return (
       <>
         <Button onClick={() => setOpen(true)} variant={'secondary'}>
-          Open Modal
+          Open Dialog
         </Button>
-        <Modal {...args} onOpenChange={setOpen} open={open}>
-          Modal content
-        </Modal>
+        <Dialog
+          {...args}
+          onCancel={() => setOpen(false)}
+          onConfirm={() => setOpen(false)}
+          onOpenChange={setOpen}
+          open={open}
+          title={'Dialog'}
+        >
+          Dialog Content
+        </Dialog>
       </>
     )
   },
