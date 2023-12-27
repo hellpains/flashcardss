@@ -25,11 +25,24 @@ const AvatarFallback = forwardRef<
   return (
     <RadixAvatar.Fallback
       className={`${s.fallback} ${className}`}
-      delayMs={600}
+      delayMs={60}
       ref={ref}
       {...rest}
     />
   )
 })
+
+type AvatarProps = {
+  src?: string
+  username?: string
+} & ComponentPropsWithoutRef<typeof RadixAvatar.Root>
+export const Avatar = ({ src, username }: AvatarProps) => {
+  return (
+    <AvatarRoot>
+      <AvatarImage src={src} />
+      <AvatarFallback>{username?.[0].toUpperCase()}</AvatarFallback>
+    </AvatarRoot>
+  )
+}
 
 export { AvatarFallback, AvatarImage, AvatarRoot }
