@@ -21,10 +21,14 @@ export const Checkbox = ({
   required,
 }: CheckboxProps) => {
   return (
-    <div className={s.checkbox}>
-      <Typography as={'label'} className={s.label} variant={'body2'}>
+    <div className={`${s.checkbox}`}>
+      <Typography
+        as={'label'}
+        className={`${s.label} ${disabled ? s.disabled : ''}`}
+        variant={'body2'}
+      >
         {position === 'left' && label}
-        <div className={s.button}>
+        <div className={`${s.button} ${disabled ? s.disabled : ''}`}>
           <RadixCheckbox.Root
             checked={checked}
             className={s.root}

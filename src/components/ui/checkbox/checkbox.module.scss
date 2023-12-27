@@ -17,8 +17,8 @@
   border-radius: 2px;
 
   &[data-disabled] {
-    color: var(--color-dark-100);
-    border: 2px solid var(--color-dark-100);
+    cursor: default;
+    opacity: 0.5;
   }
 }
 
@@ -29,6 +29,12 @@
   gap: 3px;
   align-items: center;
   justify-content: center;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.5;
+    background-color: unset;
+  }
 }
 
 .indicator {
@@ -60,5 +66,11 @@
 
   &:active {
     background-color: var(--color-dark-100);
+  }
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.5;
+    background-color: unset;
   }
 }
