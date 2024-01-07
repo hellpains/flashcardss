@@ -42,13 +42,13 @@ export const LoginForm = () => {
             <TextField
               {...register('email')}
               error={formState.errors.email?.message}
-              label={'email'}
+              label={'Email'}
             />
             <TextField
               password
               {...register('password')}
               error={formState.errors.password?.message}
-              label={'password'}
+              label={'Password'}
             />
           </div>
           <div className={s.rememberMe}>

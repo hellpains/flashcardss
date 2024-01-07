@@ -39,7 +39,11 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     return (
       <div className={classNames.container}>
-        {label && <Label className={`${disabled ? s.disabled : ''}`}>{label}</Label>}
+        {label && (
+          <Label className={`${disabled ? s.disabled : ''}`} htmlFor={'input'}>
+            {label}
+          </Label>
+        )}
         {search && (
           <div className={s.searchButton}>
             <Button disabled={disabled} variant={'icon'}>
@@ -50,6 +54,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         <input
           className={classNames.input}
           disabled={disabled}
+          id={'input'}
           onChange={handleChange}
           ref={ref}
           type={passwordVisible ? 'text' : 'password'}
