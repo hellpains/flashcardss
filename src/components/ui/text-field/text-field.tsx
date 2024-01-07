@@ -3,6 +3,7 @@ import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'rea
 import { Close, Eye, EyeOff, Search } from '@/assets/icons'
 import { Label } from '@/components/ui/label'
 import { Typography } from '@/components/ui/typography'
+import { clsx } from 'clsx'
 
 import s from './text-field.module.scss'
 
@@ -30,8 +31,14 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onValueChange?.(e.target.value)
     }
 
+    const classNames = {
+      container: clsx(s.container, disabled && s.disabled),
+      errorText: clsx(s.errorText),
+      input: clsx(className, s.input, search && s.search, error && s.error),
+    }
+
     return (
-      <div className={s.container}>
+      <div className={classNames.container}>
         {label && <Label className={`${disabled ? s.disabled : ''}`}>{label}</Label>}
         {search && (
           <div className={s.searchButton}>
@@ -41,7 +48,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           </div>
         )}
         <input
-          className={`${className} ${s.input} ${search && s.search} ${error ? s.error : ''}`}
+          className={classNames.input}
           disabled={disabled}
           onChange={handleChange}
           ref={ref}
@@ -49,19 +56,18 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           {...rest}
         />
         {password && (
-          <div className={s.eye}>
-            <Button
-              disabled={disabled}
-              onClick={() => setPasswordVisible(prev => !prev)}
-              variant={'icon'}
-            >
-              {passwordVisible ? (
-                <Eye fill={disabled ? '#4c4c4c' : '#fff'} />
-              ) : (
-                <EyeOff fill={disabled ? '#4c4c4c' : '#fff'} />
-              )}
-            </Button>
-          </div>
+          <Button
+            className={s.eye}
+            disabled={disabled}
+            onClick={() => setPasswordVisible(prev => !prev)}
+            variant={'icon'}
+          >
+            {passwordVisible ? (
+              <Eye fill={disabled ? '#4c4c4c' : '#fff'} />
+            ) : (
+              <EyeOff fill={disabled ? '#4c4c4c' : '#fff'} />
+            )}
+          </Button>
         )}
         {search && rest.value && (
           <div className={s.close}>
@@ -71,7 +77,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           </div>
         )}
         {error && (
-          <Typography className={s.errorText} variant={'caption'}>
+          <Typography className={classNames.errorText} variant={'caption'}>
             {error}
           </Typography>
         )}

@@ -1,10 +1,12 @@
+import { ElementRef, forwardRef } from 'react'
+
 import { CheckboxIcon } from '@/assets/icons'
 import { Typography } from '@/components/ui/typography'
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
 
 import s from './checkbox.module.scss'
 
-type CheckboxProps = {
+export type CheckboxProps = {
   checked?: boolean
   disabled?: boolean
   label?: string
@@ -12,37 +14,33 @@ type CheckboxProps = {
   position?: 'left' | 'right'
   required?: boolean
 }
-export const Checkbox = ({
-  checked,
-  disabled,
-  label,
-  onCheckedChange,
-  position = 'right',
-  required,
-}: CheckboxProps) => {
-  return (
-    <div className={`${s.checkbox}`}>
-      <Typography
-        as={'label'}
-        className={`${s.label} ${disabled ? s.disabled : ''}`}
-        variant={'body2'}
-      >
-        {position === 'left' && label}
-        <div className={`${s.button} ${disabled ? s.disabled : ''}`}>
-          <RadixCheckbox.Root
-            checked={checked}
-            className={s.root}
-            disabled={disabled}
-            onCheckedChange={onCheckedChange}
-            required={required}
-          >
-            <RadixCheckbox.Indicator className={s.indicator}>
-              <CheckboxIcon />
-            </RadixCheckbox.Indicator>
-          </RadixCheckbox.Root>
-        </div>
-        {position === 'right' && label}
-      </Typography>
-    </div>
-  )
-}
+export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, CheckboxProps>(
+  ({ checked, disabled, label, onCheckedChange, position = 'right', required }, ref) => {
+    return (
+      <div className={`${s.checkbox}`}>
+        <Typography
+          as={'label'}
+          className={`${s.label} ${disabled ? s.disabled : ''}`}
+          variant={'body2'}
+        >
+          {position === 'left' && label}
+          <div className={`${s.button} ${disabled ? s.disabled : ''}`}>
+            <RadixCheckbox.Root
+              checked={checked}
+              className={s.root}
+              disabled={disabled}
+              onCheckedChange={onCheckedChange}
+              ref={ref}
+              required={required}
+            >
+              <RadixCheckbox.Indicator className={s.indicator}>
+                <CheckboxIcon />
+              </RadixCheckbox.Indicator>
+            </RadixCheckbox.Root>
+          </div>
+          {position === 'right' && label}
+        </Typography>
+      </div>
+    )
+  }
+)

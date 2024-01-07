@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementType } from 'react'
 
 import s from './button.module.scss'
 
@@ -9,18 +9,15 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   variant?: 'icon' | 'link' | 'primary' | 'secondary' | 'tertiary'
 } & ComponentPropsWithoutRef<T>
 
-export const Button = forwardRef(
-  <T extends ElementType = 'button'>(
-    props: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>
-    // ref
-  ) => {
-    const { as: Component = 'button', className, fullWidth, variant = 'primary', ...rest } = props
+export const Button = <T extends ElementType = 'button'>(
+  props: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>
+) => {
+  const { as: Component = 'button', className, fullWidth, variant = 'primary', ...rest } = props
 
-    return (
-      <Component
-        className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className} ${s.button}`}
-        {...rest}
-      />
-    )
-  }
-)
+  return (
+    <Component
+      className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className} ${s.button}`}
+      {...rest}
+    />
+  )
+}

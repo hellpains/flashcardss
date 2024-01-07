@@ -1,0 +1,42 @@
+.card {
+  width: fit-content;
+  margin: 200px auto;
+  padding: 33px 36px 29px;
+
+  .title {
+    margin: 0 auto 27px;
+    text-align: center;
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 348px;
+  }
+
+  .rememberMe {
+    margin: 12px 0 6px -6px;
+  }
+
+  .forgotText {
+    display: block;
+    margin-right: 12px;
+    text-align: end;
+  }
+
+  .button {
+    margin: 66px auto 20px;
+  }
+
+  .text {
+    display: flex;
+    justify-content: center;
+    color: var(--color-light-900);
+  }
+
+  .link {
+    margin: 0 auto;
+    text-decoration: underline;
+  }
+}
