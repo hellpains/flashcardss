@@ -9,7 +9,7 @@ import s from './text-field.module.scss'
 
 import { Button } from '../button'
 
-type TextFieldProps = {
+export type TextFieldProps = {
   className?: string
   disabled?: boolean
   error?: string
@@ -34,11 +34,11 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const classNames = {
       container: clsx(s.container, disabled && s.disabled),
       errorText: clsx(s.errorText),
-      input: clsx(className, s.input, search && s.search, error && s.error),
+      input: clsx(s.input, search && s.search, error && s.error),
     }
 
     return (
-      <div>
+      <div className={className}>
         {label && (
           <Label className={`${disabled ? s.disabled : ''}`} htmlFor={'input'}>
             {label}

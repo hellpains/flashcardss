@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form'
 
-import { Button, Card, TextField, Typography } from '@/components'
+import { Button, Card, Typography } from '@/components'
 import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlled-checkbox'
+import { ControlledTextField } from '@/components/controlled/controlled-text-field/controlled-text-field'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -15,8 +16,8 @@ const loginSchema = z.object({
 })
 
 type FormValues = z.infer<typeof loginSchema>
-export const LoginForm = () => {
-  const { control, formState, handleSubmit, register } = useForm<FormValues>({
+export const LoginForm = ({ onSubmit }: { onSubmit: (values: FormValues) => void }) => {
+  const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       email: '',
       password: '',
@@ -25,10 +26,6 @@ export const LoginForm = () => {
     mode: 'onSubmit',
     resolver: zodResolver(loginSchema),
   })
-
-  const onSubmit = (data: FormValues) => {
-    console.log(data)
-  }
 
   return (
     <>
@@ -39,17 +36,8 @@ export const LoginForm = () => {
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputs}>
-            <TextField
-              {...register('email')}
-              error={formState.errors.email?.message}
-              label={'Email'}
-            />
-            <TextField
-              password
-              {...register('password')}
-              error={formState.errors.password?.message}
-              label={'Password'}
-            />
+            <ControlledTextField control={control} label={'Email'} name={'email'} />
+            <ControlledTextField control={control} label={'Password'} name={'password'} password />
           </div>
           <div className={s.rememberMe}>
             <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />

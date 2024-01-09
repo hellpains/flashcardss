@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
-import { Button, Card, TextField, Typography } from '@/components'
+import { Button, Card, Typography } from '@/components'
+import { ControlledTextField } from '@/components/controlled/controlled-text-field/controlled-text-field'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -20,21 +21,15 @@ const registrationSchema = z
 
 type FormValues = z.infer<typeof registrationSchema>
 
-type Props = {
-  onSubmit: (data: FormValues) => void
-}
-export const RegistrationForm = (props: Props) => {
-  const { control, formState, handleSubmit, register } = useForm<FormValues>({
+export const RegistrationForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
+  const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       confirmPassword: '',
       email: '',
       password: '',
     },
-    mode: 'onSubmit',
     resolver: zodResolver(registrationSchema),
   })
-
-  const handleOnSubmit = handleSubmit(props.onSubmit)
 
   return (
     <>
@@ -43,27 +38,20 @@ export const RegistrationForm = (props: Props) => {
         <Typography className={s.title} variant={'large'}>
           Sign Up
         </Typography>
-        <form onSubmit={handleOnSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputs}>
-            <TextField
-              label={'Email'}
-              {...register('email')}
-              error={formState.errors.email?.message}
-            />
-            <TextField
-              label={'Password'}
-              password
-              {...register('password')}
-              error={formState.errors.password?.message}
-            />
-            <TextField
+            <ControlledTextField control={control} label={'Email'} name={'email'} />
+            <ControlledTextField control={control} label={'Password'} name={'password'} password />
+            <ControlledTextField
+              control={control}
               label={'Confirm Password'}
+              name={'confirmPassword'}
               password
-              {...register('confirmPassword')}
-              error={formState.errors.confirmPassword?.message}
             />
           </div>
-          <Button fullWidth>Submit</Button>
+          <Button fullWidth type={'submit'}>
+            Sign Up
+          </Button>
         </form>
         <Typography className={s.text} variant={'body2'}>
           Already have an account?
