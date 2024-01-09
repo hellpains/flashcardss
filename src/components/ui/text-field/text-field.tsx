@@ -38,7 +38,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     }
 
     return (
-      <>
+      <div>
         {label && (
           <Label className={`${disabled ? s.disabled : ''}`} htmlFor={'input'}>
             {label}
@@ -88,7 +88,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             </Typography>
           )}
         </div>
-      </>
+      </div>
     )
   }
 )
