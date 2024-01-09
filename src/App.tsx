@@ -1,12 +1,15 @@
 import { Header } from '@/components'
-
-import { LoginForm } from './components/auth/login-form/login-form'
+import { RegistrationForm } from '@/components/auth/registration-form/registration-form'
 
 export function App() {
+  const onSubmit = (values: { email: string; password: string }) => {
+    console.log(values.email, values.password)
+  }
+
   return (
     <div>
       <Header isLogin />
-      <LoginForm />
+      <RegistrationForm onSubmit={onSubmit} />
     </div>
   )
 }

@@ -1,0 +1,31 @@
+.container {
+  width: fit-content;
+  margin: 200px auto;
+  padding: 33px 36px 29px;
+
+  .title {
+    display: block;
+    text-align: center;
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 348px;
+    margin: 27px 0 60px;
+  }
+
+  .text {
+    display: block;
+    margin: 20px 0 11px;
+    color: var(--color-light-900);
+    text-align: center;
+  }
+
+  .link {
+    margin: 0 auto;
+    text-decoration: underline;
+  }
+}
