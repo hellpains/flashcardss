@@ -38,55 +38,57 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     }
 
     return (
-      <div className={classNames.container}>
+      <>
         {label && (
           <Label className={`${disabled ? s.disabled : ''}`} htmlFor={'input'}>
             {label}
           </Label>
         )}
-        {search && (
-          <div className={s.searchButton}>
-            <Button disabled={disabled} variant={'icon'}>
-              <Search />
-            </Button>
-          </div>
-        )}
-        <input
-          className={classNames.input}
-          disabled={disabled}
-          id={'input'}
-          onChange={handleChange}
-          ref={ref}
-          type={passwordVisible ? 'text' : 'password'}
-          {...rest}
-        />
-        {password && (
-          <Button
-            className={s.eye}
+        <div className={classNames.container}>
+          {search && (
+            <div className={s.searchButton}>
+              <Button disabled={disabled} variant={'icon'}>
+                <Search />
+              </Button>
+            </div>
+          )}
+          <input
+            className={classNames.input}
             disabled={disabled}
-            onClick={() => setPasswordVisible(prev => !prev)}
-            variant={'icon'}
-          >
-            {passwordVisible ? (
-              <Eye fill={disabled ? '#4c4c4c' : '#fff'} />
-            ) : (
-              <EyeOff fill={disabled ? '#4c4c4c' : '#fff'} />
-            )}
-          </Button>
-        )}
-        {search && rest.value && (
-          <div className={s.close}>
-            <Button disabled={disabled} onClick={() => onValueChange?.('')} variant={'icon'}>
-              <Close fill={'#fff'} />
+            id={'input'}
+            onChange={handleChange}
+            ref={ref}
+            type={passwordVisible ? 'text' : 'password'}
+            {...rest}
+          />
+          {password && (
+            <Button
+              className={s.eye}
+              disabled={disabled}
+              onClick={() => setPasswordVisible(prev => !prev)}
+              variant={'icon'}
+            >
+              {passwordVisible ? (
+                <Eye fill={disabled ? '#4c4c4c' : '#fff'} />
+              ) : (
+                <EyeOff fill={disabled ? '#4c4c4c' : '#fff'} />
+              )}
             </Button>
-          </div>
-        )}
-        {error && (
-          <Typography className={classNames.errorText} variant={'caption'}>
-            {error}
-          </Typography>
-        )}
-      </div>
+          )}
+          {search && rest.value && (
+            <div className={s.close}>
+              <Button disabled={disabled} onClick={() => onValueChange?.('')} variant={'icon'}>
+                <Close fill={'#fff'} />
+              </Button>
+            </div>
+          )}
+          {error && (
+            <Typography className={classNames.errorText} variant={'caption'}>
+              {error}
+            </Typography>
+          )}
+        </div>
+      </>
     )
   }
 )
