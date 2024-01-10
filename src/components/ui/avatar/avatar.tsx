@@ -36,9 +36,9 @@ type AvatarProps = {
   src?: string
   username?: string
 } & ComponentPropsWithoutRef<typeof RadixAvatar.Root>
-export const Avatar = ({ src, username }: AvatarProps) => {
+export const Avatar = ({ src, username, ...rest }: AvatarProps) => {
   return (
-    <AvatarRoot>
+    <AvatarRoot {...rest}>
       <AvatarImage src={src} />
       <AvatarFallback>{username?.[0].toUpperCase()}</AvatarFallback>
     </AvatarRoot>

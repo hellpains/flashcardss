@@ -1,0 +1,58 @@
+.container {
+  width: fit-content;
+  margin: 50px auto;
+  padding: 33px 36px 41px;
+
+  .title {
+    display: block;
+    width: 348px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  .avatarContainer {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto;
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+    }
+
+    .buttonAvatar {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+
+      width: 24px;
+      height: 24px;
+
+      background-color: var(--color-dark-300);
+      border-radius: 4px;
+      box-shadow: 0 2px 10px 0 rgb(109 109 109 / 25%);
+    }
+  }
+
+  .name {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 16px auto 10px;
+  }
+
+  .email {
+    color: var(--color-dark-100);
+    text-align: center;
+  }
+
+  .button {
+    margin: 13px auto 0;
+  }
+
+  .input {
+    width: 348px;
+    margin: 4px 0 20px;
+  }
+}
